@@ -11,7 +11,8 @@ var mySlider = $('#ex1').slider({
 
     //create a new empty leaflet map over NYC
   var map = new L.Map('map', { 
-      center: [35.1,-120]
+      center: [35.1,-120],
+      zoom: 5
     });
 
     //add dark basemap
