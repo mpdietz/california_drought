@@ -1,0 +1,26 @@
+#onlayer{
+  polygon-fill: #FFFFB2;
+  polygon-opacity: 0.8;
+  line-color: #FFF;
+  line-width: 0.5;
+  line-opacity: 1;
+}
+#onlayer [ dm <= 4] {
+   polygon-fill: #B10026;
+}
+
+#onlayer [ dm <= 3] {
+   polygon-fill: #FC4E2A;
+}
+#onlayer [ dm <= 2] {
+   polygon-fill: #FD8D3C;
+}
+#onlayer [ dm <= 2] {
+   polygon-fill: #FEB24C;
+}
+#onlayer [ dm <= 1] {
+   polygon-fill: #FED976;
+}
+#onlayer [ dm <= 0] {
+   polygon-fill: #FFFFB2;
+}

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Tricia Dietz">
+
+    <title>California Drought</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cartodb-libs.global.ssl.fastly.net/cartodb.js/v3/3.15/themes/css/cartodb.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/6.1.5/css/bootstrap-slider.min.css"/>
+    <link rel="stylesheet" href="css/styles.css">
+
+
+
+
+  </head>
+  <body>
+    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <div class="navbar-icon-container">
+            <a href="#" class="navbar-icon pull-right visible-xs" id="nav-btn"><i class="fa fa-bars fa-lg white"></i></a>
+            <a href="#" class="navbar-icon pull-right visible-xs" id="sidebar-toggle-btn"><i class="fa fa-search fa-lg white"></i></a>
+          </div>
+          <a class="navbar-brand" href="#">California Drought </a>
+        </div>
+            <ul class="nav navbar-nav navbar-right">
+              <li><a href="http://github.com/mpdietz/CaliforniaDrought"><i class="fa fa-github fa-lg white"></i>  Fork Me on Github</a></li>
+            </ul>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li style = "color: white; padding-top: 15px; padding-bottom: 15px;" id="dataRange"></li>
+          </ul>
+        </div><!--/.navbar-collapse -->
+      </div>
+    </div>
+    <div id="container">
+      <div id="sidebar">
+        <div class="col-xs-12" style="height:25px;"></div>
+        <div class="col-md-12">
+               <p> A visual map intersecting the impact of drought with the number of people affected. Drought Monitor zones are based on .....  </p>
+               
+        </div>
+        <p>
+            <div class="col-md-12">
+                <p><b>Choose Year: </b></p> 
+                <input id="ex1" data-slider-id='ex1Slider' type="text" data-slider-min="2010" data-slider-max="2016" data-slider-step="1" data-slider-value="2014"/>
+              </div>
+        <div class="col-md-12">
+          <h4>Number of people per Drought Monitor Zone</h4>
+                    <p>   While the drought may seem like a minor and controllable crisis, the population of California exceeds 35 million and as water supply tightens allocating resources across cities, industries and agriculture becomes a challenge. </p>
+          <div id="popChart">
+            <svg></svg>
+          </div>
+        </div>
+        <div class="col-md-12">
+          <h4>Number of Cities per Drought Monitor Zone</h4>
+                   <p>   Major cities often have more resources to diversify water sources than smaller cities, leaving small cities more vulnerable to drought. </p>
+          <div id="citiesChart">
+            <svg></svg>
+          </div>
+        </div>
+        <div class="col-md-12">
+         <a href = 'https://twitter.com/trulydietz'>@trulydietz</a><br/>
+        </div>
+      </div>
+      <div id="map">
+      </div>
+    </div><!-- /.container -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script src="https://d3js.org/d3.v3.min.js"></script>
+    <script src="./js/nv.d3.js"></script>
+    <script src="https://cartodb-libs.global.ssl.fastly.net/cartodb.js/v3/3.15/cartodb.js"></script>
+    <script src="js/leaflet-hash.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/6.1.5/bootstrap-slider.min.js"> </script>
+    <script src = 'js/script.js'></script>
+
+  </body>
+</html>
