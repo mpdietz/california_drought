@@ -21,6 +21,9 @@ var mySlider = $('#ex1').slider({
 
  var layerUrl = 'https://nyu.cartodb.com/u/mpd361/api/v2/viz/275b6fe0-ebbe-11e5-8d06-0e31c9be1b51/viz.json';
 
+    //leaflet hash plugin updates the URL with the current map center and zoom level
+  var hash = new L.Hash(map);
+
 cartodb.createLayer(map, layerUrl)
       .addTo(map)
       .on('done', function(layer) {
