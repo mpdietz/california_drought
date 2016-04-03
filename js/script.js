@@ -52,9 +52,12 @@ cartodb.createLayer(map, layerUrl)
 mySlider.change(function(e) {
   console.log(e.value.newValue);
   var year = e.value.newValue.toString();
+  var old = e.value.oldValue.toString()
   var layerYr = 'USDM_' + year;
+  var layerOld = 'USDM_' + old;
   console.log(layerYr);
-  layer.hide(layerYr);
+  layer.hide(layerOld);
+  layer.show(layerYr);
 })
 
     //set up charts with nv.d3.js
