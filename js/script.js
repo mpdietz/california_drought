@@ -2,6 +2,14 @@
     var citiesChart;
     var sql = new cartodb.SQL({ user: 'mpd361' });
     var layerYr;
+    var layerOld;
+    var USDM_2016;
+    var USDM_2015;
+    var USDM_2014;
+    var USDM_2013;
+    var USDM_2012;
+    var USDM_2011;
+    var USDM_2010;
 
 var mySlider = $('#ex1').slider({
   formatter: function(value) {
@@ -32,21 +40,20 @@ cartodb.createLayer(map, layerUrl)
       }).on('error', function(err) {
         console.log(err)
         //log the error
-      var USDM_2016 = layer.getSubLayer(0);
-        layer.getSubLayer(0).hide();
-      var USDM_2015 = layer.getSubLayer(1);
-        layer.getSubLayer(1).hide();
-      var USDM_2014 = layer.getSubLayer(2);
-        layer.getSubLayer(2).hide();
-      var USDM_2013 = layer.getSubLayer(3);
-        layer.getSubLayer(3).hide();
-      var USDM_2012 = layer.getSubLayer(4);
-        layer.getSubLayer(4).hide();
-      var USDM_2011 = layer.getSubLayer(5);
-        layer.getSubLayer(5).hide();
-      var USDM_2010 = layer.getSubLayer(6);
-        layer.getSubLayer(6).hide();
-
+      USDM_2016 = layer.getSubLayer(0);
+        USDM_2016.show();
+      USDM_2015 = layer.getSubLayer(1);
+        USDM_2015.hide();
+      USDM_2014 = layer.getSubLayer(2);
+        USDM_2014.hide();
+      USDM_2013 = layer.getSubLayer(3);
+        USDM_2013.hide();
+      USDM_2012 = layer.getSubLayer(4);
+        USDM_2012.hide();
+      USDM_2011 = layer.getSubLayer(5);
+        USDM_2011.hide();
+      USDM_2010 = layer.getSubLayer(6);
+        USDM_2010.hide();
       });
 
 mySlider.change(function(e) {
@@ -56,8 +63,8 @@ mySlider.change(function(e) {
   var layerYr = 'USDM_' + year;
   var layerOld = 'USDM_' + old;
   console.log(layerYr);
-  layer.hide(layerOld);
-  layer.show(layerYr);
+  layerOld.hide;
+  layerYr.show;
 })
 
     //set up charts with nv.d3.js
