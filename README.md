@@ -9,11 +9,9 @@ Drought Monitor zones are based percipitation, soil moisture and ground water le
 
                 Drought Monitor zones are generated weekly. This map uses the data from the end of the first week of each year for consistency over time. For more information see (http://droughtmonitor.unl.edu/Home/Narrative.aspx) U.S. Drought Monitor. 
                 
-                #Population
-               In order to show the relative population distribution of people. A dot density projection was generated from city population counts. Each point represents 1000 people. This can disort the real population but provides a spatial understanding relative to drought zones. 
+#Population
+    In order to show the relative population distribution of people. A dot density projection was generated from city population counts. Each point represents 1000 people. This can disort the real population but provides a spatial understanding relative to drought zones. 
 
-(http://getbootstrap.com/">Bootstrap 3), (http://leafletjs.com/)Leaflet
-                
 Features and Acknowledgments
                   <ul class="list-group">
                     <li class="list-group-item">Responsive Slider Bar from Kyle Kemp available on <a href = "https://github.com/seiyria/bootstrap-slider"> Github </a> </li>
