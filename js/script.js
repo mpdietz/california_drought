@@ -40,6 +40,10 @@ cartodb.createLayer(map, layerUrl)
       }).on('error', function(err) {
         console.log(err)
         //log the error
+
+      
+    sublayers.push(sublayer);
+  }).on('error', function() {
       USDM_2016 = layer.getSubLayer(0);
         USDM_2016.show();
       USDM_2015 = layer.getSubLayer(1);
