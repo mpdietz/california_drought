@@ -3,13 +3,13 @@
     var sql = new cartodb.SQL({ user: 'mpd361' });
     var layerYr;
     var layerOld;
-    var USDM_2016;
-    var USDM_2015;
-    var USDM_2014;
-    var USDM_2013;
-    var USDM_2012;
-    var USDM_2011;
-    var USDM_2010;
+    var usdm_2016;
+    var usdm_2015;
+    var usdm_2014;
+    var usdm_2013;
+    var usdm_2012;
+    var usdm_2011;
+    var usdm_2010;
 
   //set year slider
 var mySlider = $('#ex1').slider({
@@ -43,20 +43,20 @@ cartodb.createLayer(map, layerUrl)
       .addTo(map)
       .on('done', function(layer) {
         console.log(layer);
-      USDM_2016 = layer.getSubLayer(0);
-        USDM_2016.hide();
-      USDM_2015 = layer.getSubLayer(1);
-        USDM_2015.hide();
-      USDM_2014 = layer.getSubLayer(2);
-        USDM_2014.show();
-      USDM_2013 = layer.getSubLayer(3);
-        USDM_2013.hide();
-      USDM_2012 = layer.getSubLayer(4);
-        USDM_2012.hide();
-      USDM_2011 = layer.getSubLayer(5);
-        USDM_2011.hide();
-      USDM_2010 = layer.getSubLayer(6);
-        USDM_2010.hide();
+      usdm_2016 = layer.getSubLayer(0);
+        usdm_2016.hide();
+      usdm_2015 = layer.getSubLayer(1);
+        usdm_2015.hide();
+      usdm_2014 = layer.getSubLayer(2);
+        usdm_2014.show();
+      usdm_2013 = layer.getSubLayer(3);
+        usdm_2013.hide();
+      usdm_2012 = layer.getSubLayer(4);
+        usdm_2012.hide();
+      usdm_2011 = layer.getSubLayer(5);
+        usdm_2011.hide();
+      usdm_2010 = layer.getSubLayer(6);
+        usdm_2010.hide();
       })
       //log the error
       .on('error', function(err) {
@@ -67,119 +67,53 @@ mySlider.change(function(e) {
   console.log(e.value.newValue);
   var year = e.value.newValue.toString();
   var old = e.value.oldValue.toString()
-  var layerYr = 'USDM_' + year;
-  var layerOld = 'USDM_' + old;
+  var layerYr = 'usdm_' + year;
+  var layerOld = 'usdm_' + old;
   console.log(layerYr);
  window[layerOld].hide();
  window[layerYr].show();
 })
 
     //set up charts with nv.d3.js
-    //population chart = count of points; each point = 1000 people
-    nv.addGraph(function() {
-      popChart = nv.models.multiBarHorizontalChart()
+    //population chart = count of points; each point = 1000 people,  real population is distorted by dot density
+    //sum population by dm is in the field population_k for all year layers (USDM_2010 to USDM_2016)
 
-        .x(function(d) { return d.label })   
-        .y(function(d) { return d.value })
-        .margin({top: 0, right: 0, bottom: 0, left: 150})
-        .showValues(true) 
-        .valueFormat(function(d){
-          return d;
-        })
-        .showControls(false)
-        .showLegend(false)
-        .height(250)
-        .showYAxis(false)
-        .barColor(function(d) { 
-          return getColor(d.label)
-        });
-      ;
+// This does not currently work. I am calling on the tables incorrectly and something is wrong with the sql:
 
-      popChart.tooltip.enabled(true);
-      nv.utils.windowResize(popChart.update);
+     //     sql.execute("SELECT dm as label, sum(population_k) as value FROM {{window[layerYr]}} GROUP BY dm ORDER BY value DESC").done(function(data) {
+     //        console.log(data.rows)
+     //        var ChartData = [
+     //          {
+     //            key: "Population",
+     //            values: data.rows
+     //          },
+     //        ];
+          
+     //        nv.addGraph(function() {
+     //          var chart = nv.models.stackedAreaChart()
+     //                        .margin({right: 100})
+     //                        .x(function(d) { return d.label })    //Specify the data accessors.
+     //                        .y(function(d) { return d.value })  
+     //                        .useInteractiveGuideline(true)    //Tooltips which show all data points. Very nice!
+     //                        .transitionDuration(500)
+     //                        .showControls(true)       //Allow user to choose 'Stacked', 'Stream', 'Expanded' mode.
+              
+     //          chart.xAxis
+     //              .tickFormat(function(d) { 
+     //                console.log(d);
+     //          });
 
-      return popChart;
-    });
+     //          console.log(ChartData);
+     //          chart.yAxis
+     //              .tickFormat(d3.format(',.f'));
 
-//cities chart = count of cities; cities are polygons. This might need ST Transform
-    nv.addGraph(function() {
-      citiesChart = nv.models.multiBarHorizontalChart()
+     //          d3.select('#chart svg')
+     //            .datum(ChartData)
+     //            .call(chart);
+     //                nv.utils.windowResize(chart.update);
+     //          return chart;
+     //        });
+     // })
 
-        .x(function(d) { return d.label })   
-        .y(function(d) { return d.value })
-        .margin({top: 0, right: 0, bottom: 0, left: 150})
-        .showValues(true) 
-        .valueFormat(function(d){
-          return d;
-        })
-        .showControls(false)
-        .showLegend(false)
-        .height(250)
-        .showYAxis(false)
-        .barColor(function(d) { 
-          return getColor(d.label)
-        });
-      ;
-
-      citiesChart.tooltip.enabled(false);
-      nv.utils.windowResize(citiesChart.update);
-
-      return citiesChart;
-    });
-
-    //fetches data to power the charts based on the current viewport* <--(this is very cool if i get it)
-    function fetchData(bounds) {
-      
-        //count population by dm
-        sql.execute("SELECT DM, sum(population_k) FROM {{table}} WHERE the_geom && ST_MakeEnvelope({{bounds._southWest.lng}}, {{bounds._southWest.lat}}, {{bounds._northEast.lng}}, {{bounds._northEast.lat}}, 4326) GROUP BY dm ORDER BY sum DESC;", { 
-          table: window[layerYr],
-          bounds: bounds
-        })
-        .done(function(data) {
-          var popChartData = [{
-            key: "Series 1",
-            values: []
-          }];
-
-          data.rows.forEach( function(row) {
-            typeChartData[0].values.push({
-              label: row.population,
-              value: row.DM
-            })
-          });
-
-          callChart('popChart',popChartData);
-  
-        });
-    };
-
-    //updates chart with new data
-    function callChart(chart, data) {
-      d3.select('#' + chart + ' svg')
-        .datum(data)
-        .transition().duration(750)
-        .call(window[chart]);
-    }
-
-    //maps colors
-    function getColor(DM) {
-      switch(DM) {
-        case '0':
-            return '#FFFFB2'
-            break;
-        case '1':
-            return '#FED976'
-            break;
-        case '2':
-            return '#FD8D3C'
-            break;
-        case '3':
-            return '#FC4E2A'
-            break;
-        case '4':
-            return '#B10026'
-            break;
-        }
-      }
 
 

@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="https://cartodb-libs.global.ssl.fastly.net/cartodb.js/v3/3.15/themes/css/cartodb.css" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/6.1.5/css/bootstrap-slider.min.css"/>
+    <link rel="stylesheet" href="css/nvd3.css">
     <link rel="stylesheet" href="css/styles.css">
 
 
@@ -42,7 +43,7 @@
                   <li><a href="data/USDM_2010.geojson" download="museums.geojson" target="_blank" data-toggle="collapse" data-target=".navbar-collapse.in"><i class="fa fa-download"></i>&nbsp;&nbsp;Drought 2010</a></li>
                 </ul>
             </li>
-              <li><a href="http://github.com/mpdietz/CaliforniaDrought"><i class="fa fa-github fa-lg white"></i>  Fork Me on Github</a></li>
+              <li><a href="http://github.com/mpdietz/california_drought"><i class="fa fa-github fa-lg white"></i>  Fork Me on Github</a></li>
             </ul>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
@@ -55,17 +56,21 @@
       <div id="sidebar">
         <div class="col-xs-12" style="height:25px;"></div>
         <div class="col-md-12">
-               <p> A visual map intersecting the impact of drought with the number of people affected. 
-               
+               <p> A visual map intersecting the impact of drought with the number of people affected. Drought in California is cyclical with 2011 representing the beginning of the most recent El Nino/La Nina cycle. 
         </div>
         <p>
             <div class="col-md-12">
-                <p><b>Choose Year: </b></p> 
+                <p><b>Choose Year (2010 - 2016): </b></p> 
                 <input id="ex1" data-slider-id='ex1Slider' type="text" data-slider-min="2010" data-slider-max="2016" data-slider-step="1" data-slider-value="2014"/>
               </div>
         <div class="col-md-12">
           <h4>Number of people per Drought Monitor Zone</h4>
-                    <p>   While the drought may seem like a minor and controllable crisis, the population of California exceeds 35 million and as water supply tightens allocating resources across cities, industries and agriculture becomes a challenge. </p>
+                    <p>   
+                      While the drought may seem like a minor and controllable crisis, the population of California exceeds 35 million and as water supply tightens allocating resources across cities, industries and agriculture becomes a challenge. 
+                      <br>
+                      <br>
+                      This map shows that those living in the Central Valley are more frequently affected by drought yet live in less dense areas. This has relevant policy implications on future capital projects. It is often these smaller cities that lack a diversity of water sources to mitigate effects of drought. 
+                    </p>
           <div id="popChart">
             <svg></svg>
           </div>
@@ -98,11 +103,11 @@
                 3 = Extreme Drought </br>
                 4 = Exceptional Drought </br></br>
 
-                This map uses the data from the first week of each year for consistency over time.For more information see <a href="http://droughtmonitor.unl.edu/Home/Narrative.aspx"> U.S. Drought Monitor. </a>  </p>
-                <h4> Population <h5>
+                Drought Monitor zones are generated weekly. This map uses the data from the end of the first week of each year for consistency over time. For more information see <a href="http://droughtmonitor.unl.edu/Home/Narrative.aspx"> U.S. Drought Monitor. </a>  </p>
+                <h4> Population </h5>
                   <p> In order to show the relative population distribution of people. A dot density projection was generated from city population counts. Each point represents 1000 people. This can disort the real population but provides a spatial understanding relative to drought zones. <br> <br>
 
-                  This map shows that those living in the Central Valler are more frequently affected by drought yet live in less dense areas. This has relatant policy challenges. It is often this smaller cities that lack the diversity of water resources that larger cities can provide.</p>
+                  </p>
 
 
                  <a href="http://getbootstrap.com/">Bootstrap 3</a>, <a href="http://leafletjs.com/" target="_blank">Leaflet</a>. 

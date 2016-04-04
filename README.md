@@ -1,12 +1,22 @@
-# cartodb-bootstrap-template
-A starter template for creating a fullscreen cartodb.js map with bootstrap navbar
+# Drought Monitor Indicator
+Drought Monitor zones are based percipitation, soil moisture and ground water level based on historic conditions. 
 
-This project also used the template created by Chris Whong 311 buddy. 
+                0 = Abnormally Dry </br>
+                1 = Moderate Drought </br>
+                2 = Severe Drought </br>
+                3 = Extreme Drought </br>
+                4 = Exceptional Drought </br></br>
 
-- Uses the cartodb base layer and data from this [cartodb.js tutorial](http://docs.cartodb.com/tutorials/create_map_cartodbjs.html)
-- Based on this [bootstrap starter template](http://getbootstrap.com/examples/starter-template/)
+                Drought Monitor zones are generated weekly. This map uses the data from the end of the first week of each year for consistency over time. For more information see (http://droughtmonitor.unl.edu/Home/Narrative.aspx) U.S. Drought Monitor. 
+                
+                #Population
+               In order to show the relative population distribution of people. A dot density projection was generated from city population counts. Each point represents 1000 people. This can disort the real population but provides a spatial understanding relative to drought zones. 
 
-![screenshot](https://www.evernote.com/shard/s288/sh/cf9f5723-a8b5-4eba-8a8b-98227ebbc9b6/1d6f64d6a6cceb573fa0ad7eb5fb4f36/res/9893047c-9628-4783-9be0-24197d35a58b/skitch.png?resizeSmall&width=832)
-
-This project has borrowed some CSS and layout elements from the awesome [Bootleaf](https://github.com/bmcbride/bootleaf) by Bryan McBride
-
+(http://getbootstrap.com/">Bootstrap 3), (http://leafletjs.com/)Leaflet
+                
+Features and Acknowledgments
+                  <ul class="list-group">
+                    <li class="list-group-item">Responsive Slider Bar from Kyle Kemp available on <a href = "https://github.com/seiyria/bootstrap-slider"> Github </a> </li>
+                    <li class="list-group-item">Downloadable GeoJSON files from <a href = <a href="http://droughtmonitor.unl.edu"> U.S. Drought Monitor </a></li>
+                    <li class="list-group-item">Template Elements and layout was borrowed from Brian McBride <a href = "https://github.com/bmcbride/bootleaf"> Bootleaf </a> and Chris Whong's <a href " https://github.com/chriswhong/311buddy"> 311 Buddy </a> - an awesome resource to visualize and download NYC 311 data </a></li>
+                     <li class="list-group-item">Thank you Professor Chris Whong for all your help and patience!</a></li>
