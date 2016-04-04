@@ -18,9 +18,14 @@ var mySlider = $('#ex1').slider({
   }
   });
 
+$("#about-btn").click(function() {
+  $("#aboutModal").modal("show");
+  $(".navbar-collapse.in").collapse("hide");
+  return false;
+});
     //create a new empty leaflet map over California @ a statewide level
   var map = new L.Map('map', { 
-      center: [35.1,-120],
+      center: [35.1,-115],
       zoom: 5
     });
 
@@ -39,11 +44,11 @@ cartodb.createLayer(map, layerUrl)
       .on('done', function(layer) {
         console.log(layer);
       USDM_2016 = layer.getSubLayer(0);
-        USDM_2016.show();
+        USDM_2016.hide();
       USDM_2015 = layer.getSubLayer(1);
         USDM_2015.hide();
       USDM_2014 = layer.getSubLayer(2);
-        USDM_2014.hide();
+        USDM_2014.show();
       USDM_2013 = layer.getSubLayer(3);
         USDM_2013.hide();
       USDM_2012 = layer.getSubLayer(4);
@@ -57,10 +62,6 @@ cartodb.createLayer(map, layerUrl)
       .on('error', function(err) {
         console.log(err)
         })
-  //   sublayers.push(sublayer);
-  // }).on('done', function() {
- 
-  //     });
 
 mySlider.change(function(e) {
   console.log(e.value.newValue);
@@ -69,8 +70,8 @@ mySlider.change(function(e) {
   var layerYr = 'USDM_' + year;
   var layerOld = 'USDM_' + old;
   console.log(layerYr);
-  layerOld.hide;
-  layerYr.show;
+ window[layerOld].hide();
+ window[layerYr].show();
 })
 
     //set up charts with nv.d3.js
@@ -126,40 +127,12 @@ mySlider.change(function(e) {
       return citiesChart;
     });
 
-
     //fetches data to power the charts based on the current viewport* <--(this is very cool if i get it)
     function fetchData(bounds) {
-
-      //count cities by dm
-      sql.execute("SELECT dm, count(cartodb_id) FROM {{table}} WHERE the_geom && ST_MakeEnvelope({{bounds._southWest.lng}}, {{bounds._southWest.lat}}, {{bounds._northEast.lng}}, {{bounds._northEast.lat}}, 4326) GROUP BY dm ORDER BY count DESC;", { 
-          table: layerYr,
-          bounds: bounds
-        })
-
-        .done(function(data) {
-          var citiesChartData = [{
-            key: "Series 1",
-            values: []
-          }];
-
-          data.rows.forEach( function(row) {
-            citiesChartData[0].values.push({
-              label: row.cities,
-              value: row.count
-            })
-          });
-
-          callChart('citiesChart', citiesChartData);
-
-        })
-        .error(function(errors) {
-          // errors contains a list of errors
-          console.log("errors:" + errors);
-        });
-
+      
         //count population by dm
-        sql.execute("SELECT DM, count(population) FROM {{table}} WHERE the_geom && ST_MakeEnvelope({{bounds._southWest.lng}}, {{bounds._southWest.lat}}, {{bounds._northEast.lng}}, {{bounds._northEast.lat}}, 4326) GROUP BY dm ORDER BY count DESC;", { 
-          table: layerYr,
+        sql.execute("SELECT DM, sum(population_k) FROM {{table}} WHERE the_geom && ST_MakeEnvelope({{bounds._southWest.lng}}, {{bounds._southWest.lat}}, {{bounds._northEast.lng}}, {{bounds._northEast.lat}}, 4326) GROUP BY dm ORDER BY sum DESC;", { 
+          table: window[layerYr],
           bounds: bounds
         })
         .done(function(data) {

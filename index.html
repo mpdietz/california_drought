@@ -29,6 +29,7 @@
           <a class="navbar-brand" href="#">California Drought </a>
         </div>
             <ul class="nav navbar-nav navbar-right">
+              <li><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" id="about-btn"><i class="fa fa-question-circle white"></i>&nbsp;&nbsp;About</a></li>
               <li class="dropdown">
                 <a class="dropdown-toggle" id="downloadDrop" href="#" role="button" data-toggle="dropdown"><i class="fa fa-cloud-download white"></i>&nbsp;&nbsp;Download <b class="caret"></b></a>
                 <ul class="dropdown-menu">
@@ -54,7 +55,7 @@
       <div id="sidebar">
         <div class="col-xs-12" style="height:25px;"></div>
         <div class="col-md-12">
-               <p> A visual map intersecting the impact of drought with the number of people affected. Drought Monitor zones are based on a combination of percipitation, soil moisture and ground water level. For more information see <a href="http://droughtmonitor.unl.edu/Home/Narrative.aspx"> U.S. Drought Monitor. </a>  </p>
+               <p> A visual map intersecting the impact of drought with the number of people affected. 
                
         </div>
         <p>
@@ -70,18 +71,55 @@
           </div>
         </div>
         <div class="col-md-12">
-          <h4>Number of Cities per Drought Monitor Zone</h4>
-                   <p>   Major cities often have more resources to diversify water sources than smaller cities, leaving small cities more vulnerable to drought. </p>
-          <div id="citiesChart">
-            <svg></svg>
-          </div>
-        </div>
-        <div class="col-md-12">
          <a href = 'https://twitter.com/trulydietz'>@trulydietz</a><br/>
         </div>
       </div>
       <div id="map">
       </div>
+        <div class="modal fade" id="aboutModal" tabindex="-1" role="dialog">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button class="close" type="button" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h4 class="modal-title">The California Drought</h4>
+          </div>
+          <div class="modal-body">
+            <ul class="nav nav-tabs nav-justified" id="aboutTabs">
+              <li class="active"><a href="#about" data-toggle="tab"><i class="fa fa-question-circle"></i>&nbsp;About the project</a></li>
+             </ul>
+            <div class="tab-content" id="aboutTabsContent">
+              <div class="tab-pane fade active in" id="about">
+                <h4> Drought Monitor Indicator </h4>
+                <p> Drought Monitor zones are based percipitation, soil moisture and ground water level based on historic conditions. </br></br>
+
+                0 = Abnormally Dry </br>
+                1 = Moderate Drought </br>
+                2 = Severe Drought </br>
+                3 = Extreme Drought </br>
+                4 = Exceptional Drought </br></br>
+
+                This map uses the data from the first week of each year for consistency over time.For more information see <a href="http://droughtmonitor.unl.edu/Home/Narrative.aspx"> U.S. Drought Monitor. </a>  </p>
+                <h4> Population <h5>
+                  <p> In order to show the relative population distribution of people. A dot density projection was generated from city population counts. Each point represents 1000 people. This can disort the real population but provides a spatial understanding relative to drought zones. <br> <br>
+
+                  This map shows that those living in the Central Valler are more frequently affected by drought yet live in less dense areas. This has relatant policy challenges. It is often this smaller cities that lack the diversity of water resources that larger cities can provide.</p>
+
+
+                 <a href="http://getbootstrap.com/">Bootstrap 3</a>, <a href="http://leafletjs.com/" target="_blank">Leaflet</a>. 
+                 Open source and available on <a href="https://github.com/mpd361/california_drought" target="_blank">GitHub</a>.</p>
+                <div class="panel panel-primary">
+                  <div class="panel-heading">Features and Acknowledgments</div>
+                  <ul class="list-group">
+                    <li class="list-group-item">Responsive Slider Bar from Kyle Kemp available on <a href = "https://github.com/seiyria/bootstrap-slider"> Github </a> </li>
+                    <li class="list-group-item">Downloadable GeoJSON files from <a href = <a href="http://droughtmonitor.unl.edu"> U.S. Drought Monitor </a></li>
+                    <li class="list-group-item">Template Elements and layout was borrowed from Brian McBride <a href = "https://github.com/bmcbride/bootleaf"> Bootleaf </a> and Chris Whong's <a href " https://github.com/chriswhong/311buddy"> 311 Buddy </a> - an awesome resource to visualize and download NYC 311 data </a></li>
+                     <li class="list-group-item">Thank you Professor Chris Whong for all your help and patience!</a></li>
+                  </ul>
+                </div>
+              </div>
+              </div>
+            </div>
+          </div>
     </div><!-- /.container -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <script src="https://d3js.org/d3.v3.min.js"></script>
@@ -92,5 +130,35 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/6.1.5/bootstrap-slider.min.js"> </script>
     <script src = 'js/script.js'></script>
 
+  <!--   I could not figure out how to integrate this with loading the cartodb layers -->
+    <script type="text\cartocss" id="mapcolors">
+                #onlayer{
+              polygon-fill: #FFFFB2;
+              polygon-opacity: 0.8;
+              line-color: #FFF;
+              line-width: 0.5;
+              line-opacity: 1;
+            }
+            #onlayer [ dm <= 4] {
+               polygon-fill: #B10026;
+            }
+
+            #onlayer [ dm <= 3] {
+               polygon-fill: #FC4E2A;
+            }
+            #onlayer [ dm <= 2] {
+               polygon-fill: #FD8D3C;
+            }
+            #onlayer [ dm <= 2] {
+               polygon-fill: #FEB24C;
+            }
+            #onlayer [ dm <= 1] {
+               polygon-fill: #FED976;
+            }
+            #onlayer [ dm <= 0] {
+               polygon-fill: #FFFFB2;
+            }
+
+            </script>
   </body>
 </html>
