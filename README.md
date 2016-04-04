@@ -16,5 +16,5 @@ Features and Acknowledgments
                   <ul class="list-group">
                     <li class="list-group-item">Responsive Slider Bar from Kyle Kemp available on <a href = "https://github.com/seiyria/bootstrap-slider"> Github </a> </li>
                     <li class="list-group-item">Downloadable GeoJSON files from <a href = <a href="http://droughtmonitor.unl.edu"> U.S. Drought Monitor </a></li>
-                    <li class="list-group-item">Template Elements and layout was borrowed from Brian McBride <a href = "https://github.com/bmcbride/bootleaf"> Bootleaf </a> and Chris Whong's <a href " https://github.com/chriswhong/311buddy"> 311 Buddy </a> - an awesome resource to visualize and download NYC 311 data </a></li>
+                    <li class="list-group-item">Template Elements and layout were borrowed from Brian McBride <a href = "https://github.com/bmcbride/bootleaf"> Bootleaf </a> and Chris Whong's <a href " https://github.com/chriswhong/311buddy"> 311 Buddy </a> - an awesome resource to visualize and download NYC 311 data </a></li>
                      <li class="list-group-item">Thank you Professor Chris Whong for all your help and patience!</a></li>
