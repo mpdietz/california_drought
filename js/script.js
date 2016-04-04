@@ -11,13 +11,14 @@
     var USDM_2011;
     var USDM_2010;
 
+  //set year slider
 var mySlider = $('#ex1').slider({
   formatter: function(value) {
     return 'Year: ' + value;
   }
   });
 
-    //create a new empty leaflet map over NYC
+    //create a new empty leaflet map over California @ a statewide level
   var map = new L.Map('map', { 
       center: [35.1,-120],
       zoom: 5
@@ -37,13 +38,6 @@ cartodb.createLayer(map, layerUrl)
       .addTo(map)
       .on('done', function(layer) {
         console.log(layer);
-      }).on('error', function(err) {
-        console.log(err)
-        //log the error
-
-      
-    sublayers.push(sublayer);
-  }).on('error', function() {
       USDM_2016 = layer.getSubLayer(0);
         USDM_2016.show();
       USDM_2015 = layer.getSubLayer(1);
@@ -58,7 +52,15 @@ cartodb.createLayer(map, layerUrl)
         USDM_2011.hide();
       USDM_2010 = layer.getSubLayer(6);
         USDM_2010.hide();
-      });
+      })
+      //log the error
+      .on('error', function(err) {
+        console.log(err)
+        })
+  //   sublayers.push(sublayer);
+  // }).on('done', function() {
+ 
+  //     });
 
 mySlider.change(function(e) {
   console.log(e.value.newValue);
